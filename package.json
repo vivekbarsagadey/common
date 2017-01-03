@@ -1,0 +1,26 @@
+{
+  "name": "common",
+  "version": "0.0.1",
+  "description": "Java script common lib for string and array operations.",
+  "main": "dist/common.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vivekbarsagadey/common.git"
+  },
+  "keywords": [
+    "common",
+    "string",
+    "util",
+    "array",
+    "util"
+  ],
+  "author": "vivek barsagadey",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vivekbarsagadey/common/issues"
+  },
+  "homepage": "https://github.com/vivekbarsagadey/common#readme"
+}
