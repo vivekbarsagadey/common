@@ -32,6 +32,9 @@ module.exports = function (grunt) {
                 src: 'src/**',
                 filter: 'isFile'
             }
+        },
+        qunit: {
+            all: ['test/**/*.html']
         }
     });
 
@@ -39,7 +42,8 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-jsdoc');
     grunt.loadNpmTasks('grunt-contrib-jshint');
+    grunt.loadNpmTasks('grunt-contrib-qunit');
 
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'jsdoc', 'uglify']);
+    grunt.registerTask('default', ['jshint', 'jsdoc', 'uglify','qunit']);
 };
