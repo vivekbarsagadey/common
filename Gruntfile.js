@@ -1,36 +1,45 @@
 /**
  * Created by vivek_000 on 05/01/2017.
  */
-module.exports = function(grunt){
+module.exports = function (grunt) {
 
     // Project configuration.
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        /*uglify: {
-            options: {
-                banner: '/!*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> *!/\n'
-            },
-            build: {
-                src: 'src/<%= pkg.name %>.js',
-                dest: 'build/<%= pkg.name %>.min.js'
-            }
-        }*/
-
         uglify: {
             options: {
                 banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
             },
-            dist :{
-                files :{
-                    "dist/string-utils.min.js":["src/string-utils.js"]
+            dist: {
+                files: {
+                    "dist/string-utils.min.js": ["src/string-utils.js"]
                 }
+            }
+        },
+        jsdoc: {
+            dist: {
+                src: ['src/*.js', 'test/*.js'],
+                options: {
+                    destination: 'doc'
+                }
+            }
+        },
+        jshint: {
+            ignore_warning: {
+                options: {
+                    '-W015': true,
+                },
+                src: 'src/**',
+                filter: 'isFile'
             }
         }
     });
 
     // Load the plugin that provides the "uglify" task.
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-jsdoc');
+    grunt.loadNpmTasks('grunt-contrib-jshint');
 
     // Default task(s).
-    grunt.registerTask('default', ['uglify']);
+    grunt.registerTask('default', ['jshint', 'jsdoc', 'uglify']);
 };
