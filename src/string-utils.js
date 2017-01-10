@@ -1,13 +1,20 @@
 /**
+ * this function for checking value isString
+ * @param {String} value
+ * @returns {boolean}
+ */
+function isStringType(value){
+    return (typeof value === 'string' || value instanceof String);
+}
+
+
+/**
+ * this function for checking null and empty value
  * @param {String} value
  * @returns {boolean}
  */
 function isNotBlank(value){
-    var result = false;
-    if(value && value.trim()!==""){
-        result = true;
-    }
-    return result;
+   return (value && isStringType(value) && value.trim()!=="");
 }
 
 /**
@@ -31,9 +38,18 @@ function stringToLowerCase(value){
 	return result;
 }
 
+
+/**
+ *
+ * @param {String} value
+ * @param {Any} {defaultValue}
+ * @returns {String}
+ */
 function getValue(value,defaultValue){
-    if(value){
+    if(isNotBlank(value)){
         value = value.trim();
+    }else if(value){
+        value = value;
     }else{
         if(defaultValue){
             value = defaultValue;
@@ -64,6 +80,12 @@ if (!String.prototype.trim) {
   };
 }
 
+
+/**
+ * this function for count Upper Case Chars in string
+ * @param {string} str
+ * @returns {count}
+ */
 function countUpperCaseChars(str) {
 	if(this.isNotBlank(str)){
 		var count=0,len=str.length;
@@ -75,13 +97,12 @@ function countUpperCaseChars(str) {
 	else{
 		return 0;
 	}
-	  
 }
 
 
 /**
  *
- * @param {string} string
+ * @param {string} str
  * @returns {string}
  */
 function camelize(str) {

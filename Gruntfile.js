@@ -27,7 +27,7 @@ module.exports = function (grunt) {
         jshint: {
             ignore_warning: {
                 options: {
-                    '-W015': true,
+                    '-W015': true
                 },
                 src: 'src/**',
                 filter: 'isFile'
@@ -45,5 +45,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-qunit');
 
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'jsdoc', 'uglify','qunit']);
+    grunt.registerTask('default', ['jshint','uglify', 'jsdoc', 'qunit']);
+    grunt.registerTask('test', ['uglify', 'qunit']);
 };
