@@ -8,11 +8,12 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON('package.json'),
         uglify: {
             options: {
-                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                sourceMap : true
             },
             dist: {
                 files: {
-                    "dist/string-utils.min.js": ["src/string-utils.js"]
+                    "dist/string-utils.min.js": ["dist/string-utils.js"]
                 }
             }
         },
@@ -27,7 +28,8 @@ module.exports = function (grunt) {
         jshint: {
             ignore_warning: {
                 options: {
-                    '-W015': true
+                    '-W015': true,
+                    'esnext': true
                 },
                 src: 'src/**',
                 filter: 'isFile'
@@ -35,6 +37,17 @@ module.exports = function (grunt) {
         },
         qunit: {
             all: ['test/**/*.html']
+        },
+        es6transpiler: {
+            options: {
+                banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n',
+                sourceMap : true
+            },
+            dist: {
+                files: {
+                    'dist/string-utils.js': 'src/string-utils.js'
+                }
+            }
         }
     });
 
@@ -43,8 +56,12 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-jsdoc');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-contrib-qunit');
+    grunt.loadNpmTasks('grunt-es6-transpiler');
 
     // Default task(s).
-    grunt.registerTask('default', ['jshint','uglify', 'jsdoc', 'qunit']);
-    grunt.registerTask('test', ['uglify', 'qunit']);
+    //grunt.registerTask('default', ['jshint','uglify', 'jsdoc', 'qunit']);
+    grunt.registerTask('test', ['es6transpiler','uglify', 'qunit']);
+    grunt.registerTask('default', ['jshint','es6transpiler','uglify', 'jsdoc' ,'qunit']);
+
+
 };

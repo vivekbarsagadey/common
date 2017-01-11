@@ -1,38 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>JSDoc: Source: string-utils.js</title>
-
-    <script src="scripts/prettify/prettify.js"> </script>
-    <script src="scripts/prettify/lang-css.js"> </script>
-    <!--[if lt IE 9]>
-      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
-    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
-</head>
-
-<body>
-
-<div id="main">
-
-    <h1 class="page-title">Source: string-utils.js</h1>
-
-    
-
-
-
-    
-    <section>
-        <article>
-            <pre class="prettyprint source linenums"><code>/**
+/**
  * Created by vivek_000 on 11/01/2017.
  */
 
-class StringUtil {
+var StringUtil = (function(){"use strict";var PRS$0 = (function(o,t){o["__proto__"]={"a":t};return o["a"]===t})({},{});var DP$0 = Object.defineProperty;var GOPD$0 = Object.getOwnPropertyDescriptor;var MIXIN$0 = function(t,s){for(var p in s){if(s.hasOwnProperty(p)){DP$0(t,p,GOPD$0(s,p));}}return t};var static$0={};
 
-    constructor(){
+    function StringUtil(){
         if (typeof String.prototype.startsWith !== 'function') {
             String.prototype.startsWith = function (str){
                 return this.indexOf(str) === 0;
@@ -50,15 +22,15 @@ class StringUtil {
                 return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, '');
             };
         }
-    }
+    }DP$0(StringUtil,"prototype",{"configurable":false,"enumerable":false,"writable":false});
     /**
      * this function for checking value isString
      * @param {String} value
      * @returns {boolean}
      */
-    static isStringType(value) {
+    static$0.isStringType = function(value) {
         return (typeof value === 'string' || value instanceof String);
-    }
+    };
 
 
     /**
@@ -66,37 +38,37 @@ class StringUtil {
      * @param {String} value
      * @returns {boolean}
      */
-    static isNotBlank(value) {
-        let result  = false;
+    static$0.isNotBlank = function(value) {
+        var result  = false;
         if(value){
-            result = StringUtil.isStringType(value) &amp;&amp; value.trim() !== "";
+            result = StringUtil.isStringType(value) && value.trim() !== "";
         }else{
             result = false;
         }
         return result;
-        /*return (value &amp;&amp; (StringUtil.isStringType(value) &amp;&amp; value.trim() !== ""));*/
-    }
+        /*return (value && (StringUtil.isStringType(value) && value.trim() !== ""));*/
+    };
 
     /**
      * @param {String} value
      * @returns {boolean}
      */
-    static isBlank(value) {
+    static$0.isBlank = function(value) {
         return !StringUtil.isNotBlank(value);
-    }
+    };
 
     /**
      *
      * @param value
      * @returns {*}
      */
-    static  stringToLowerCase(value) {
+    static$0.stringToLowerCase = function(value) {
         var result = value;
         if (isNotBlank(value)) {
             result = value.toLowerCase();
         }
         return result;
-    }
+    };
 
 
     /**
@@ -105,7 +77,7 @@ class StringUtil {
      * @param {Any} {defaultValue}
      * @returns {String}
      */
-    static  getValue(value, defaultValue) {
+    static$0.getValue = function(value, defaultValue) {
         if (StringUtil.isNotBlank(value)) {
             value = value.trim();
         } else if (value) {
@@ -118,7 +90,7 @@ class StringUtil {
             }
         }
         return value;
-    }
+    };
 
 
     /**
@@ -126,10 +98,10 @@ class StringUtil {
      * @param {string} str
      * @returns {count}
      */
-    static  countUpperCaseChars(str) {
+    static$0.countUpperCaseChars = function(str) {
         if (StringUtil.isNotBlank(str)) {
             var count = 0, len = str.length;
-            for (var i = 0; i &lt; len; i++) {
+            for (var i = 0; i < len; i++) {
                 if (/[A-Z]/.test(str.charAt(i))) count++;
             }
             return count;
@@ -137,7 +109,7 @@ class StringUtil {
         else {
             return 0;
         }
-    }
+    };
 
 
     /**
@@ -145,7 +117,7 @@ class StringUtil {
      * @param {string} str
      * @returns {string}
      */
-    static  camelize(str) {
+    static$0.camelize = function(str) {
         if (StringUtil.isNotBlank(str)) {
             return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function (letter, index) {
                 return index === 0 ? letter.toUpperCase() : letter.toLowerCase();
@@ -154,31 +126,9 @@ class StringUtil {
 
             return str;
         }
-    }
+    };
 
 
-}
+MIXIN$0(StringUtil,static$0);static$0=void 0;return StringUtil;})();
 
-new StringUtil();</code></pre>
-        </article>
-    </section>
-
-
-
-
-</div>
-
-<nav>
-    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="StringUtil.html">StringUtil</a></li></ul>
-</nav>
-
-<br class="clear">
-
-<footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.3</a> on Wed Jan 11 2017 18:08:57 GMT+0530 (India Standard Time)
-</footer>
-
-<script> prettyPrint(); </script>
-<script src="scripts/linenumber.js"> </script>
-</body>
-</html>
+new StringUtil();
