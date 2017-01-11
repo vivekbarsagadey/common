@@ -2,9 +2,15 @@
  * Created by vivek_000 on 11/01/2017.
  */
 
+
+const EMPTY  = "";
 class StringUtil {
 
+
     constructor(){
+
+        //console.log("StringConstant" , StringConstant);
+
         if (typeof String.prototype.startsWith !== 'function') {
             String.prototype.startsWith = function (str){
                 return this.indexOf(str) === 0;
@@ -39,9 +45,10 @@ class StringUtil {
      * @returns {boolean}
      */
     static isNotBlank(value) {
+        console.log(EMPTY);
         let result  = false;
         if(value){
-            result = StringUtil.isStringType(value) && value.trim() !== "";
+            result = StringUtil.isStringType(value) && value.trim() !== EMPTY;
         }else{
             result = false;
         }

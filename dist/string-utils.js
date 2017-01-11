@@ -2,9 +2,15 @@
  * Created by vivek_000 on 11/01/2017.
  */
 
+
+var EMPTY  = "";
 var StringUtil = (function(){"use strict";var PRS$0 = (function(o,t){o["__proto__"]={"a":t};return o["a"]===t})({},{});var DP$0 = Object.defineProperty;var GOPD$0 = Object.getOwnPropertyDescriptor;var MIXIN$0 = function(t,s){for(var p in s){if(s.hasOwnProperty(p)){DP$0(t,p,GOPD$0(s,p));}}return t};var static$0={};
 
+
     function StringUtil(){
+
+        //console.log("StringConstant" , StringConstant);
+
         if (typeof String.prototype.startsWith !== 'function') {
             String.prototype.startsWith = function (str){
                 return this.indexOf(str) === 0;
@@ -39,9 +45,10 @@ var StringUtil = (function(){"use strict";var PRS$0 = (function(o,t){o["__proto_
      * @returns {boolean}
      */
     static$0.isNotBlank = function(value) {
+        console.log(EMPTY);
         var result  = false;
         if(value){
-            result = StringUtil.isStringType(value) && value.trim() !== "";
+            result = StringUtil.isStringType(value) && value.trim() !== EMPTY;
         }else{
             result = false;
         }

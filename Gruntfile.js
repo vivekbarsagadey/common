@@ -45,7 +45,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'dist/string-utils.js': 'src/string-utils.js'
+                    'dist/string-utils.js': ['src/string-utils.js']
                 }
             }
         }
