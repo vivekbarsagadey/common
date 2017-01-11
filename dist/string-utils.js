@@ -100,8 +100,8 @@ var StringUtil = (function(){"use strict";var PRS$0 = (function(o,t){o["__proto_
      */
     static$0.countUpperCaseChars = function(str) {
         if (StringUtil.isNotBlank(str)) {
-            var count = 0, len = str.length;
-            for (var i = 0; i < len; i++) {
+            var count = 0;
+            for (var i = 0; i < str.length; i++) {
                 if (/[A-Z]/.test(str.charAt(i))) count++;
             }
             return count;

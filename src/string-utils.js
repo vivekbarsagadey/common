@@ -63,7 +63,7 @@ class StringUtil {
      * @returns {*}
      */
     static stringToLowerCase(value) {
-        var result = value;
+        let result = value;
         if (isNotBlank(value)) {
             result = value.toLowerCase();
         }
@@ -98,10 +98,10 @@ class StringUtil {
      * @param {string} str
      * @returns {count}
      */
-    static  countUpperCaseChars(str) {
+    static countUpperCaseChars(str) {
         if (StringUtil.isNotBlank(str)) {
-            var count = 0, len = str.length;
-            for (var i = 0; i < len; i++) {
+            let count = 0;
+            for (let i = 0; i < str.length; i++) {
                 if (/[A-Z]/.test(str.charAt(i))) count++;
             }
             return count;
